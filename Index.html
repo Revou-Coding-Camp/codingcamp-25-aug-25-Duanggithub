@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <title>PT Nusa Nexus</title>
+        <!-- CSS Wxternal -->
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header Content -->
+     <header>
+        <!-- icon -->
+         <div class="logo">IT Company</div>
+
+         <!-- Navbar -->
+        <nav>
+            <a href="">home</a>
+            <a href="">profil</a>
+            <a href="">portofolio</a>
+            <a href="">massage</a>
+        </nav>
+     </header>
+
+     <!-- Main Content-->
+      <main></main>
+      <main>
+
+        <!-- home -->
+         <section id="Home Page" class="min-h-[500px]">
+            <header>
+                <h2 class=""text-center text-[24px] font-bold py-[16px]">
+                Welcome <span id="username"></span> to Our Website
+                </h2>"
+            </header>
+
+            <p class="text-center">
+                We are a profesionals IT Company in IT defence, cybersecurity and Investigating to solve your problem.
+            </p>
+         </section>
+      </main>
+
+      <!-- Facilities Section -->
+       <section id="Profile" class="facility">
+        <h2>Our Facilities</h2>
+        <div class="facility-container">
+            <div class="facility">
+                <div class="circle">🔐</div>
+                <p>Cybersecurity</p>
+        </div>
+        <div class="facility">
+            <div class="circle">🕵🏻‍♀️</div>
+            <p>Forensic Digital</p>
+        </div>
+        <div class="facility">
+            <div class="circle">📋</div>
+            <p>Certification</p>
+        </div>
+        <div class="facility">
+            <div class="circle">👩🏼‍🏫</div>
+            <p>Training</p>
+        </div>
+     </div>
+     </section>
+    
+     <!-- Massage Section -->
+      <section id="massage" class="massage">
+        <h2>massage Us</h2>
+        <div class="form-Container">
+            <form id="massageForm">
+                <label>Nama:</label>
+                <input type="text" id="Nama" required>
+
+                <label>Tanggal Lahir:</label>
+                <input type="date" id="tanggallahir" required>
+
+                <label>Jenis Kelamin</label>
+                <div>
+                    <input type="radio" name="gender" value="Laki-lake"> Lak-Laki
+                    <input type="radio" name="gender" value="Perempuan"> Perempuan
+                </div>
+
+                <label>Pesan:</label>
+                <textarea id="pesan" required></textarea>
+                <buttontype="submit">kirim</buttontype>
+            </form>
+
+            <div class="result">
+                <h3>Hasil Submit</h3>
+                <p><strong>Nama:</strong> <span id="resNama"></span></p>
+                <p><strong>Tanggal Lahir:</strong> <span id="resTanggalLahir"></span></p>
+                <p><strong>Jenis Kelamin:</strong> <span id="resGender"></span></p>
+                <p><strong>Pesan:</strong> <span id="resPesan"></span></p>
+            </div>
+        </div>
+      </section>
+
+      <script src="script.js"></script>
+</body>
+</html>
