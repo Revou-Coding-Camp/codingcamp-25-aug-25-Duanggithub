@@ -1,101 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
-    <title>PT Nusa Nexus</title>
-        <!-- CSS Wxternal -->
-        <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Nusa Nexus</title>
+<style>
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #00aaff, #0077cc);
+  color: #fff;
+}
+
+/* Navbar */
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #0077cc;
+  position: sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 4px 6px rgba(0,0,0,0.3);
+}
+
+header.navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header.navbar nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  transition: color 0.3s;
+  cursor:pointer;
+}
+
+header.navbar nav a:hover {
+  color: #ffdd00;
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  min-height: 80vh;
+  display:none;
+  opacity:0;
+  transition: opacity 0.5s;
+}
+
+section.active {
+  display:block;
+  opacity:1;
+}
+
+/* Home */
+.hero h2 {
+  font-size:36px;
+  text-align:center;
+  margin-bottom:20px;
+  text-shadow:2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.hero p {
+  font-size:18px;
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 40px auto;
+}
+
+/* Gallery Images */
+.gallery {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  margin-bottom:40px;
+}
+
+.gallery img {
+  width:250px;
+  height:180px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  cursor:pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Full width video */
+.hero video {
+  width:100%;
+  max-height:600px;
+  object-fit:cover;
+  border-radius:0;
+  display:block;
+}
+
+/* Profil Section */
+#Profil {
+  background: rgba(255,255,255,0.1);
+  border-radius:12px;
+  padding:40px 20px;
+}
+
+#Profil h3 {
+  margin-top:20px;
+  margin-bottom:10px;
+  font-size:22px;
+}
+
+#Profil ul {
+  list-style:none;
+  padding-left:0;
+}
+
+#Profil ul li {
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+/* Facilities / Portfolio Cards */
+.facilities-container, .portfolio-container {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  margin-top:20px;
+}
+
+.facility-card, .portfolio-card {
+  background: rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:12px;
+  flex:1 1 200px;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.facility-card:hover, .portfolio-card:hover {
+  transform: scale(1.05);
+}
+
+.circle {
+  width:80px;
+  height:80px;
+  background:#fff;
+  color:#0077cc;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:32px;
+  margin:0 auto 10px;
+}
+
+/* Message Form */
+.message form, .message .result {
+  flex:1 1 300px;
+  padding:20px;
+  border-radius:12px;
+  background: rgba(255,255,255,0.1);
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  margin:10px 0;
+}
+
+.form-container {
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+}
+
+form input, form textarea, form button {
+  padding:10px;
+  border:none;
+  border-radius:5px;
+}
+
+form input, form textarea {
+  background: rgba(255,255,255,0.2);
+  color:#fff;
+  width:100%;
+}
+
+form input::placeholder, form textarea::placeholder {
+  color:#eee;
+}
+
+form button {
+  background:#ffdd00;
+  color:#0077cc;
+  font-weight:bold;
+  cursor:pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+form button:hover {
+  background:#ffaa00;
+  transform:scale(1.05);
+}
+</style>
 </head>
-
 <body>
-    <!-- Header Content -->
-     <header>
-        <!-- icon -->
-         <div class="logo">IT Company</div>
 
-         <!-- Navbar -->
-        <nav>
-            <a href="">home</a>
-            <a href="">profil</a>
-            <a href="">portofolio</a>
-            <a href="">massage</a>
-        </nav>
-     </header>
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo">IT Company</div>
+  <nav>
+    <a data-target="Home">Home</a>
+    <a data-target="Profil">Profil</a>
+    <a data-target="Portofolio">Portofolio</a>
+    <a data-target="Message">Message</a>
+  </nav>
+</header>
 
-     <!-- Main Content-->
-      <main></main>
-      <main>
+<!-- Sections -->
+<section id="Home" class="hero active">
+  <h2>Welcome <span id="username"></span> to PT Nusa Nexus</h2>
+  <p>We are a professional IT company specializing in cybersecurity, IT defense, digital forensics, and IT solutions for businesses and organizations.</p>
 
-        <!-- home -->
-         <section id="Home Page" class="min-h-[500px]">
-            <header>
-                <h2 class=""text-center text-[24px] font-bold py-[16px]">
-                Welcome <span id="username"></span> to Our Website
-                </h2>"
-            </header>
+  <!-- Gallery Images -->
+  <div class="gallery">
+    <img src="https://picsum.photos/400/300?random=1" alt="Foto kegiatan 1">
+    <img src="https://picsum.photos/400/300?random=2" alt="Foto kegiatan 2">
+    <img src="https://picsum.photos/400/300?random=3" alt="Foto kegiatan 3">
+    <img src="https://picsum.photos/400/300?random=4" alt="Foto kegiatan 4">
+  </div>
 
-            <p class="text-center">
-                We are a profesionals IT Company in IT defence, cybersecurity and Investigating to solve your problem.
-            </p>
-         </section>
-      </main>
+  <!-- Full width video -->
+  <video autoplay muted loop>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+</section>
 
-      <!-- Facilities Section -->
-       <section id="Profile" class="facility">
-        <h2>Our Facilities</h2>
-        <div class="facility-container">
-            <div class="facility">
-                <div class="circle">🔐</div>
-                <p>Cybersecurity</p>
-        </div>
-        <div class="facility">
-            <div class="circle">🕵🏻‍♀️</div>
-            <p>Forensic Digital</p>
-        </div>
-        <div class="facility">
-            <div class="circle">📋</div>
-            <p>Certification</p>
-        </div>
-        <div class="facility">
-            <div class="circle">👩🏼‍🏫</div>
-            <p>Training</p>
-        </div>
-     </div>
-     </section>
-    
-     <!-- Massage Section -->
-      <section id="massage" class="massage">
-        <h2>massage Us</h2>
-        <div class="form-Container">
-            <form id="massageForm">
-                <label>Nama:</label>
-                <input type="text" id="Nama" required>
+<section id="Profil" class="facility">
+  <h2>Profil Perusahaan</h2>
+  <p>PT Nusa Nexus adalah perusahaan IT yang bergerak di bidang keamanan siber dan solusi digital.  
+  Berdiri sejak 2015, kami telah membantu berbagai organisasi melindungi data dan infrastruktur IT mereka.</p>
 
-                <label>Tanggal Lahir:</label>
-                <input type="date" id="tanggallahir" required>
+  <h3>Visi & Misi</h3>
+  <ul>
+    <li>🌟 <strong>Visi:</strong> Menjadi perusahaan IT terdepan dalam solusi keamanan digital.</li>
+    <li>🎯 <strong>Misi:</strong> Memberikan layanan cybersecurity, edukasi, dan inovasi teknologi terbaik.</li>
+  </ul>
 
-                <label>Jenis Kelamin</label>
-                <div>
-                    <input type="radio" name="gender" value="Laki-lake"> Lak-Laki
-                    <input type="radio" name="gender" value="Perempuan"> Perempuan
-                </div>
+  <h3>Keunggulan Kami</h3>
+  <div class="facilities-container">
+    <div class="facility-card">
+      <div class="circle">🔐</div>
+      <p>Ahli Cybersecurity</p>
+    </div>
+    <div class="facility-card">
+      <div class="circle">🕵🏻‍♂️</div>
+      <p>Forensic Digital</p>
+    </div>
+    <div class="facility-card">
+      <div class="circle">📊</div>
+      <p>Analisis Data & Audit</p>
+    </div>
+    <div class="facility-card">
+      <div class="circle">👩‍💻</div>
+      <p>Tim Profesional IT</p>
+    </div>
+  </div>
+</section>
 
-                <label>Pesan:</label>
-                <textarea id="pesan" required></textarea>
-                <buttontype="submit">kirim</buttontype>
-            </form>
+<section id="Portofolio" class="portfolio">
+  <h2>Portofolio & Layanan</h2>
+  <div class="portfolio-container">
+    <div class="portfolio-card">
+      <div class="circle">🔐</div>
+      <p>Cybersecurity Audit</p>
+    </div>
+    <div class="portfolio-card">
+      <div class="circle">🕵🏻‍♀️</div>
+      <p>Digital Forensics</p>
+    </div>
+    <div class="portfolio-card">
+      <div class="circle">📋</div>
+      <p>IT Certification</p>
+    </div>
+    <div class="portfolio-card">
+      <div class="circle">👩🏼‍🏫</div>
+      <p>Training & Workshop</p>
+    </div>
+  </div>
+</section>
 
-            <div class="result">
-                <h3>Hasil Submit</h3>
-                <p><strong>Nama:</strong> <span id="resNama"></span></p>
-                <p><strong>Tanggal Lahir:</strong> <span id="resTanggalLahir"></span></p>
-                <p><strong>Jenis Kelamin:</strong> <span id="resGender"></span></p>
-                <p><strong>Pesan:</strong> <span id="resPesan"></span></p>
-            </div>
-        </div>
-      </section>
+<section id="Message" class="message">
+  <h2>Message Us</h2>
+  <div class="form-container">
+    <form id="messageForm">
+      <label>Nama:</label>
+      <input type="text" id="nama" placeholder="Masukkan nama" required>
 
-      <script src="script.js"></script>
+      <label>Tanggal Lahir:</label>
+      <input type="date" id="tanggallahir" required>
+
+      <label>Jenis Kelamin:</label>
+      <div>
+        <input type="radio" name="gender" value="Laki-laki"> Laki-Laki
+        <input type="radio" name="gender" value="Perempuan"> Perempuan
+      </div>
+
+      <label>Pesan:</label>
+      <textarea id="pesan" placeholder="Tulis pesanmu di sini..." required></textarea>
+      <button type="submit">Kirim</button>
+    </form>
+
+    <div class="result">
+      <h3>Hasil Submit</h3>
+      <p><strong>Nama:</strong> <span id="resNama"></span></p>
+      <p><strong>Tanggal Lahir:</strong> <span id="resTanggal"></span></p>
+      <p><strong>Jenis Kelamin:</strong> <span id="resGender"></span></p>
+      <p><strong>Pesan:</strong> <span id="resPesan"></span></p>
+    </div>
+  </div>
+</section>
+
+<script>
+// Greet user
+window.addEventListener("load", () => {
+  let username = prompt("Please enter your name:");
+  document.getElementById("username").innerText = username ? username : "Guest";
+});
+
+// Show/Hide sections based on navbar click
+document.querySelectorAll("header.navbar nav a").forEach(link => {
+  link.addEventListener("click", function(){
+    let targetId = this.dataset.target;
+    document.querySelectorAll("section").forEach(sec=>{
+      sec.classList.remove("active");
+    });
+    document.getElementById(targetId).classList.add("active");
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+});
+
+// Form submit
+document.getElementById("messageForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let nama = document.getElementById("nama").value.trim();
+  let tanggallahir = document.getElementById("tanggallahir").value;
+  let gender = document.querySelector("input[name='gender']:checked")?.value;
+  let pesan = document.getElementById("pesan").value.trim();
+
+  if(!nama || !gender || !pesan) {
+    alert("Semua field wajib diisi!");
+    return;
+  }
+
+  document.getElementById("resNama").innerText = nama;
+  document.getElementById("resTanggal").innerText = tanggallahir;
+  document.getElementById("resGender").innerText = gender;
+  document.getElementById("resPesan").innerText = pesan;
+
+  this.reset();
+  document.querySelector(".result").scrollIntoView({behavior:"smooth"});
+
+  alert(`Terima Kasih, ${nama}! Pesanmu sudah terkirim.`);
+});
+</script>
+
 </body>
 </html>
